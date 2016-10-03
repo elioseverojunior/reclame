@@ -1,0 +1,13 @@
+<p class="lead">
+ Lista das reclamações para a empresa {{company.fantasyName}} com o tom {{company.selectedTone}}.
+</p>
+<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
+<div ng-show="show==false"><img ng-src="images/thinking.gif" class="halfsize"></div>
+<div class="form-group" ng-show="show==true">
+  <div class="list-group">
+    <li class="list-group-item active">Reclamações</li>
+    <a ng-repeat="comp in complaints" class="list-group-item"
+    href="https://www.reclameaqui.com.br/{{comp.doc.id}}/a/b/"
+    target="_blank">{{comp.doc.title}}</a>
+  </div>
+</div>

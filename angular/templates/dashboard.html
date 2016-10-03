@@ -1,0 +1,40 @@
+<p class="lead">
+ Visão consolidada das reclamações para a empresa {{company.fantasyName}}.
+</p>
+
+<div ng-show="show==false"><img ng-src="images/thinking.gif" class="halfsize"></div>
+
+<div class="panel panel-default" ng-if="show">
+  <div class="panel-heading">Emocional</div>
+  <div class="panel-body">
+    <nvd3 options="emotion_options" data="emotion_data"></nvd3>
+  </div>
+</div>
+
+<div class="panel panel-default" ng-if="show">
+  <div class="panel-heading">Linguagem</div>
+  <div class="panel-body">
+    <nvd3 options="language_options" data="language_data"></nvd3>
+  </div>
+</div>
+
+<div class="panel panel-default" ng-if="show">
+  <div class="panel-heading">Social</div>
+  <div class="panel-body">
+    <nvd3 options="social_options" data="social_data"></nvd3>
+  </div>
+</div>
+
+<div class="panel panel-default"  ng-if="show">
+  <div class="panel-body" ng-init="myVar = 'https://www.ibm.com/watson/developercloud/doc/tone-analyzer/understanding-tone.shtml'">
+
+    Os gráficos acima mostram a quantidade de reclamações que apresentaram
+    cada um dos tons analisados. Uma reclamação pode apresentar mais de um tom.
+    Para mais informações sobre análise de tons consulte a
+    <a ng-href="{{myVar}}" target="_blank">documentação</a> do Watson Tone Analyzer.
+    Nesta demonstração, foi considerado um score mínimo de 0.375 para
+    contabilizar a presença de um tom em uma reclamação, além disso
+    limitei em 20 o número de reclamações por empresa, evitando
+     uso excessivo das APIs.
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "name": "reclame",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "ejs": "latest",
+    "body-parser": "latest",
+    "method-override": "latest",
+    "errorhandler": "latest",
+    "node-rest-client": "latest",
+    "cloudant": "latest",
+    "sync-request": "latest",
+    "watson-developer-cloud": "latest",
+    "string": "latest"
+  },
+  "repository": {},
+  "engines": {
+  	"node": ">=4.2.x"
+  }
+}
