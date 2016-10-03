@@ -35,10 +35,3 @@ if ('development' == app.get('env')) {
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });
-
-/*
-//runs data load at each 60 minutes
-setInterval(function(){
-	loader.load(config.loader.indice, config.loader.offset, config.loader.company);
-}, (60*60*1000));
-*/
