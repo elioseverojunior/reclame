@@ -3,7 +3,23 @@ var config = require('./config'),
 
 var companybyname = function (companyname){
   companyencoded = encodeURIComponent(companyname);
-  var res = request('GET', config.search.reclameurl + companyencoded);
+  console.log(config.search.reclameurl + companyencoded);
+
+ /* to avoid bot-detection software */ 
+  var options = {
+    'headers': {
+      'Host': 'iosearch.reclameaqui.com.br',
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0',
+      'Accept': 'application/json, text/plain, */*',
+      'Accept-Language': 'en-US,en;q=0.8,pt;q=0.6',
+      'Accept-Encoding': 'gzip, deflate, sdch, br',
+      'Referer': 'http://www.reclameaqui.com.br/',
+      'Origin': 'http://www.reclameaqui.com.br/'
+    }
+  };
+
+
+  var res = request('GET', config.search.reclameurl + companyencoded, options);
   data = JSON.parse(res.getBody('utf8'))
   if (data.constructor === Array)
     result = data;
