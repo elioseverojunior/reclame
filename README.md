@@ -26,13 +26,13 @@ Frontend (Web)
 
 Create the following services and runtimes on Bluemix:
 
-- Node.js: SDK for Node.js Cloud Foundry application
+Node.js: SDK for Node.js Cloud Foundry application
 
-- Cloudant: create a Cloudant service called reclame-cloudant and connect it to the previous application.
+Cloudant: create a Cloudant service called reclame-cloudant and connect it to the previous application.
 
-- Watson translation
+Watson translation
 
-- Watson Tone Analyzer
+Watson Tone Analyzer
 
 * Git
 
@@ -44,17 +44,17 @@ Clone the current repository
 
 After cloning:
 
-- rename config.template.js to config.js and update it with your data.
+rename config.template.js to config.js and update it with your data.
 
-- rename manifest.template.yml to manifest.template.yml and update it with your data.
+rename manifest.template.yml to manifest.template.yml and update it with your data.
 
 * Cloudant Instructions:
 
-- The cloudant service has to have a database called reclame-cloudant.
-  after creating the database add the following view-based index in a
-  design document called design_reclamacoes, both with _sum reduce function:
+The cloudant service has to have a database called reclame-cloudant.
+After creating the database add the following view-based index in a
+design document called design_reclamacoes, both with _sum reduce function:
 
-1. inprogress
+**inprogress**
 ```javascript
   function (doc) {
   if (doc.emotion_tone)
@@ -64,7 +64,7 @@ After cloning:
   }
   ```
 
-2. complaintswithtones
+**complaintswithtones**
 
   ```javascript
   function(doc){
