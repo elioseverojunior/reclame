@@ -41,6 +41,7 @@ var load = function (indice, offset, company){
 
       var listaComplaints = jsonarray.complainResult.complains.data;
       for(var i = 0; i < listaComplaints.length; i++) {
+
          //tweaks to store data in cloudant
          listaComplaints[i]._id  = "r" + listaComplaints[i].id;
          //updates category, products and problemType with its description.
@@ -48,17 +49,20 @@ var load = function (indice, offset, company){
          listaComplaints[i].productType  = produtos[listaComplaints[i].productType];
          listaComplaints[i].problemType = tiposProblema[listaComplaints[i].problemType];
          console.log("[", listaComplaints[i]._id , "] loading");
+
          database.gravaDoc(db, listaComplaints[i], function(document, err) {
-           if (!err) {
-              console.log("[", document._id, "] loading finished");
-              tone.analisa(document)
-           } else {
-              console.log("[", document._id, "] Error occured " +  err);
-           }
-         });
+            if (!err) {
+               console.log("[", document._id, "] loading finished");
+               tone.analisa(document);
+            } else {
+               console.log("[", document._id, "] Error occured " +  err);
+            }
+          });
        }
     });
 };
+
+
 
 module.exports = {
   load: load

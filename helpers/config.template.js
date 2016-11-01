@@ -32,7 +32,6 @@ config.db =
 // watson credentials
 config.watson =
 {
-  "reclameurl" : "https://iosearch.reclameaqui.com.br/raichu-io-site-search-0.0.1-SNAPSHOT/companies/search/",
   "translatorApiUser" : /* USE YOUR CREDENTIALS HERE */,
   "translatorApiKey" : /* USE YOUR CREDENTIALS HERE */,
   "toneanalysisApiUser" : /* USE YOUR CREDENTIALS HERE */,

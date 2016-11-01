@@ -1,6 +1,8 @@
 var config = require('./config'),
 		cloudant = require('cloudant');
 
+global.lastwrite = new Date().getTime();
+
 var initDBConnection = function (){
   var cloudant;
   var dbCredentials = {
@@ -57,25 +59,28 @@ function gravaDoc(db, doc, callback) {
 	var documentId = doc._id;
   //try read
   readDocument(db, doc._id, function(document) {
+		global.lastwrite+=1000	//hack to avoid 10 writes per second cloudant limit
+		busywait(lastwrite);
+
     if(document==null) {
       // document not found: let's try to save
       db.insert(doc, function(err, data) {
         if(err) {
           console.log('[', documentId, '] [db][gravaDoc] error inserting document');
-					callback(null);
+					callback(doc, err);
         } else {
 					console.log('[', documentId, '] [db] inserted');
-					callback(doc);
+					callback(doc, null);
         }
       });
     } else {
       // document already exists let's update it
       doc._rev = document._rev;
       doc._id = document._id;
-      db.insert(doc, function(err, data) {
+			db.insert(doc, function(err, data) {
         if(err) {
 					console.log('[', documentId, '] [db][gravaDoc] error updating document');
-					callback(null, err);
+					callback(doc, err);
         }
         else {
 					console.log('[', documentId, '] [db] updated');
@@ -97,7 +102,13 @@ function readDocument(db, doc_id, callback) {
   });
 };
 
-
+var busywait = function(timestamp){
+  //hack to busy wait some time to avoid 10 writes per second limit
+  //var stop = new Date().getTime();
+  while(new Date().getTime() < timestamp) {
+         ;
+  }
+}
 
 module.exports = {
   initDBConnection: initDBConnection,

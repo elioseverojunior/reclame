@@ -5,11 +5,11 @@ var companybyname = function (companyname){
   companyencoded = encodeURIComponent(companyname);
   console.log(config.search.reclameurl + companyencoded);
 
- /* to avoid bot-detection software */ 
+ /* to avoid bot-detection software */
   var options = {
     'headers': {
       'Host': 'iosearch.reclameaqui.com.br',
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:45.0) Gecko/20100101 Firefox/45.0',
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
       'Accept': 'application/json, text/plain, */*',
       'Accept-Language': 'en-US,en;q=0.8,pt;q=0.6',
       'Accept-Encoding': 'gzip, deflate, sdch, br',
@@ -63,10 +63,14 @@ var gettones = function (tones, companyid){
       label = label.slice(0, -5);
      var parameters = 'reduce=true&key='+ key;
      var urlConsulta = config.db.url + '/' + config.db.name + '/_design/' +
-                       config.db.designdocument + '/_view/howmanytones?' + parameters;
+                       config.db.designdocument + '/_view/complaintswithtones?' + parameters;
        var res = request('GET', urlConsulta);
        data = JSON.parse(res.getBody('utf8'));//{"rows":[{"key":null,"value":10}]}
-       values[tone] = {"label":label, "value": Math.round(data.rows[0].value)};
+       if (data.rows.length > 0) {
+         values[tone] = {"label":label, "value": Math.round(data.rows[0].value)};
+       }else{
+         values[tone] = {"label":label, "value": 0};
+       }
   }
   return values;
 }

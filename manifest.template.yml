@@ -3,8 +3,8 @@ applications:
   memory: 512M
   instances: 1
   domain: mybluemix.net
-  name: reclame
-  host: reclame
+  name: <add you app name>
+  host: <add your app name>
   disk_quota: 1024M
   services:
   - reclame-cloudant

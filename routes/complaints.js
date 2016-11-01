@@ -35,8 +35,8 @@ var express = require('express')
 
   router.get('/pollinprogress', function(request, response) {
     var companyid = request.query.companyid;
-    var key = '{\"companyid\":\"' + encodeURIComponent(companyid) + '\"}';
-    var parameters = 'reduce=true&key='+ key;
+    var key = '[\"' + encodeURIComponent(companyid) + '\"]';
+    var parameters = 'reduce=true&group=true&keys='+ key;
     var urlConsulta = config.db.url + '/' + config.db.name + '/_design/' +
                       config.db.designdocument + '/_view/inprogress?' + parameters;
     var res = reqsync('GET', urlConsulta);
