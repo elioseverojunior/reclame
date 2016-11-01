@@ -22,7 +22,7 @@ Frontend (Web)
 
  # How to use it?
 
-1. Bluemix Services and Runtimes
+* Bluemix Services and Runtimes
 
 Create the following services and runtimes on Bluemix:
 
@@ -34,7 +34,7 @@ Create the following services and runtimes on Bluemix:
 
 - Watson Tone Analyzer
 
-2. Git
+* Git
 
 Clone the current repository
 
@@ -48,13 +48,13 @@ After cloning:
 
 - rename manifest.template.yml to manifest.template.yml and update it with your data.
 
-4. Cloudant Instructions:
+* Cloudant Instructions:
 
 - The cloudant service has to have a database called reclame-cloudant.
   after creating the database add the following view-based index in a
   design document called design_reclamacoes, both with _sum reduce function:
 
-  1) inprogress
+1. inprogress
 ```javascript
   function (doc) {
   if (doc.emotion_tone)
@@ -64,7 +64,7 @@ After cloning:
   }
   ```
 
-  2) complaintswithtones
+2. complaintswithtones
 
   ```javascript
   function(doc){
