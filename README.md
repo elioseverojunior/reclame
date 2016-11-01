@@ -50,11 +50,11 @@ rename manifest.template.yml to manifest.template.yml and update it with your da
 
 * Cloudant Instructions:
 
-The cloudant service has to have a database called reclame-cloudant.
+The cloudant service must have a database called reclame-cloudant.
 After creating the database add the following view-based index in a
 design document called design_reclamacoes, both with _sum reduce function:
 
-**inprogress**
+*inprogress*
 ```javascript
   function (doc) {
   if (doc.emotion_tone)
@@ -64,7 +64,7 @@ design document called design_reclamacoes, both with _sum reduce function:
   }
   ```
 
-**complaintswithtones**
+*complaintswithtones*
 
   ```javascript
   function(doc){
