@@ -1,6 +1,5 @@
 {
   "_id": "_design/design_reclamacoes",
-  "_rev": "31-3ed4e58dc7359a83c9f4f9473cd5b518",
   "views": {
     "inprogress": {
       "map": "function (doc) {\nif (doc.emotion_tone)\n    emit(doc.company, 0);\n  else \n    emit(doc.company, 1);\n}",

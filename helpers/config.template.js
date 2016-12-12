@@ -20,7 +20,7 @@ if(!process.env.VCAP_SERVICES) {
   // configuration to run application locally
   config.db =
   {
-    "name" :  /* USE YOUR CLOUDANT DB NAME HERE */,
+    "name" : "reclame-cloudant",
     "username": /* USE YOUR CREDENTIALS HERE */,
     "password": /* USE YOUR CREDENTIALS HERE */,
     "host": /* USE YOUR CLOUDANT HOST HERE */,
