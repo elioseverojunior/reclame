@@ -58,45 +58,5 @@ rename manifest.template.yml to manifest.template.yml and update it with your da
 **Cloudant Instructions:**
 
 The cloudant service must have a database called **reclame-cloudant**.
-After creating the database add the following view-based index in a
-design document called design_reclamacoes, both with **_sum** reduce function:
-
-*inprogress*
-
-```javascript
-  function (doc) {
-  if (doc.emotion_tone)
-      emit(doc.company, 0);
-    else
-      emit(doc.company, 1);
-  }
-  ```
-
-*complaintswithtones*
-
-  ```javascript
-  function(doc){
-      var threshold = 0.375;
-      if (doc.emotion_tone){
-        for (var i in doc.emotion_tone) {
-          if (doc.emotion_tone[i].score >= threshold){
-            emit({"companyid": doc.company, "toneid": 'emotion.' + doc.emotion_tone[i].tone_id}, 1);
-          }
-        }
-      }
-      if (doc.language_tone){
-        for (var j in doc.language_tone) {
-          if (doc.language_tone[j].score >= threshold){
-            emit({"companyid": doc.company, "toneid": 'language.' + doc.language_tone[j].tone_id}, 1);
-          }
-        }
-      }
-      if (doc.social_tone){
-        for (var k in doc.social_tone) {
-          if (doc.social_tone[k].score >= threshold){
-            emit({"companyid": doc.company, "toneid": 'social.' + doc.social_tone[k].tone_id}, 1);
-          }
-        }
-      }
-  }
-  ```
+After creating the database, using the dashboard create a new Design document
+and paste the contents of cloudant\/\_design\/design_reclamacoes.json into it.
