@@ -59,4 +59,4 @@ rename manifest.template.yml to manifest.template.yml and update it with your da
 
 The cloudant service must have a database called **reclame-cloudant**.
 After creating the database, using the dashboard create a new Design document
-and paste the contents of cloudant\/\_design\/design_reclamacoes.json into it.
+and paste the contents of *cloudant/\_design/design_reclamacoes.json* into it.
