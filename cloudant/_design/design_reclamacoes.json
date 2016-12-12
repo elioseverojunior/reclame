@@ -1,0 +1,15 @@
+{
+  "_id": "_design/design_reclamacoes",
+  "_rev": "31-3ed4e58dc7359a83c9f4f9473cd5b518",
+  "views": {
+    "inprogress": {
+      "map": "function (doc) {\nif (doc.emotion_tone)\n    emit(doc.company, 0);\n  else \n    emit(doc.company, 1);\n}",
+      "reduce": "_sum"
+    },
+    "complaintswithtones": {
+      "map": "function(doc){\n    var threshold = 0.375;\n    if (doc.emotion_tone){\n      for (var i in doc.emotion_tone) {\n        if (doc.emotion_tone[i].score >= threshold){\n          emit({\"companyid\": doc.company, \"toneid\": 'emotion.' + doc.emotion_tone[i].tone_id}, 1);\n        }\n      }\n    }\n    if (doc.language_tone){\n      for (var j in doc.language_tone) {\n        if (doc.language_tone[j].score >= threshold){\n          emit({\"companyid\": doc.company, \"toneid\": 'language.' + doc.language_tone[j].tone_id}, 1);\n        }\n      }\n    }\n    if (doc.social_tone){\n      for (var k in doc.social_tone) {\n        if (doc.social_tone[k].score >= threshold){\n          emit({\"companyid\": doc.company, \"toneid\": 'social.' + doc.social_tone[k].tone_id}, 1);\n        }\n      }\n    }\n}",
+      "reduce": "_sum"
+    }
+  },
+  "language": "javascript"
+}
