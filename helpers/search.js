@@ -8,13 +8,14 @@ var companybyname = function (companyname){
  /* to avoid bot-detection software */
   var options = {
     'headers': {
-      'Host': 'iosearch.reclameaqui.com.br',
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
       'Accept': 'application/json, text/plain, */*',
       'Accept-Language': 'en-US,en;q=0.8,pt;q=0.6',
       'Accept-Encoding': 'gzip, deflate, sdch, br',
-      'Referer': 'http://www.reclameaqui.com.br/',
-      'Origin': 'http://www.reclameaqui.com.br/'
+      'Host': 'iosearch.reclameaqui.com.br',
+      'Origin': 'http://www.reclameaqui.com.br/',
+      'Referer': 'http://www.reclameaqui.com.br/reclamar',
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
+      'Connection':'keep-alive'
     }
   };
 

@@ -24,11 +24,13 @@ Frontend (Web)
 
 * Bluemix Services and Runtimes
 
-Create the following services and runtimes on Bluemix:
+Create the following and runtime on Bluemix:
 
 Node.js: SDK for Node.js Cloud Foundry application
 
-Cloudant: create a Cloudant service called reclame-cloudant and connect it to the previous application.
+Create and connect it to the previous application the folowing services:
+
+Cloudant DB
 
 Watson translation
 
@@ -44,7 +46,8 @@ Clone the current repository
 
 After cloning:
 
-rename config.template.js to config.js and update it with your data.
+rename config.template.js to config.js and update it with your data where
+there is ``` /** USE YOUR CLOUDANT DB NAME HERE */ ```
 
 rename manifest.template.yml to manifest.template.yml and update it with your data.
 
@@ -55,6 +58,7 @@ After creating the database add the following view-based index in a
 design document called design_reclamacoes, both with **_sum** reduce function:
 
 *inprogress*
+
 ```javascript
   function (doc) {
   if (doc.emotion_tone)

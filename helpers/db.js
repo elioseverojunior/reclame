@@ -110,7 +110,53 @@ var busywait = function(timestamp){
   }
 }
 
+//utility function to clean complains records of a company
+function cleanByCompany(companyId){
+	var db = initDBConnection();
+	db.find({selector:{company: companyId}}, function(er, result) {
+   if (er) {
+     throw er;
+   }
+   console.log('Deleted %d documents with company ' + companyId, result.docs.length);
+   for (var i = 0; i < result.docs.length; i++) {
+     var docId = result.docs[i]._id
+		 var docRev = result.docs[i]._rev
+		 db.destroy(docId, docRev,
+			 function(er, body){
+				 if (!er){
+					   console.log("Successfully deleted doc %s %s", docId, docRev);
+				 } else {
+				 		console.log("Error deleting doc %s", docId, docRev);
+				 		console.log("Error %s", er);
+				 }
+			 }
+		 );
+   }
+ });
+
+/*
+
+alice.view('characters', 'crazy_ones', { keys: ['key1', 'key2', 'key_n'] }, function(err, body) {
+  if (!err) {
+    body.rows.forEach(function(doc) {
+      console.log(doc.value);
+    });
+  }
+});
+
+complaintswithtones
+reduce=false&include_docs=true&key
+
+	alice.search('characters', 'crazy_ones', { q: 'cat' }, function(err, doc) {
+  if (!err) {
+    console.log(doc);
+  }
+});
+*/
+};
+
 module.exports = {
   initDBConnection: initDBConnection,
-	gravaDoc: gravaDoc
+	gravaDoc: gravaDoc,
+	cleanByCompany: cleanByCompany
 };
