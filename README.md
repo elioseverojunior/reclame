@@ -22,21 +22,21 @@ Frontend (Web)
 
  # How to use it?
 
-* Bluemix Services and Runtimes
+**Bluemix Services and Runtimes**
 
-Create the following and runtime on Bluemix:
+Create the following runtime on Bluemix:
 
-Node.js: SDK for Node.js Cloud Foundry application
+* Node.js: SDK for Node.js Cloud Foundry application
 
-Create and connect it to the previous application the folowing services:
+Create and connect to the previous application the following services:
 
-Cloudant DB
+* Cloudant DB
 
-Watson translation
+* Watson translation
 
-Watson Tone Analyzer
+* Watson Tone Analyzer
 
-* Git
+**Git**
 
 Clone the current repository
 
@@ -47,7 +47,11 @@ Clone the current repository
 After cloning:
 
 rename config.template.js to config.js and update it with your data where
-there is ``` /** USE YOUR CLOUDANT DB NAME HERE */ ```
+there is a sentence like this:
+
+```
+/** USE YOUR * HERE */
+```
 
 rename manifest.template.yml to manifest.template.yml and update it with your data.
 
