@@ -1,3 +1,6 @@
+/** Configuration File */
+var config = {};
+
 /** Template Configuration File */
 /** rename to config.js after adding your project data */
 config.loader =
@@ -21,21 +24,21 @@ if(!process.env.VCAP_SERVICES) {
   config.db =
   {
     "name" : "reclame-cloudant",
-    "username": /* USE YOUR CREDENTIALS HERE */,
-    "password": /* USE YOUR CREDENTIALS HERE */,
-    "host": /* USE YOUR CLOUDANT HOST HERE */,
-    "port": /* USE YOUR CLOUDANT PORT HERE */,
-    "url": /* USE YOUR URL HERE */,
+    "username": "/* USE YOUR CREDENTIALS HERE */",
+    "password": "/* USE YOUR CREDENTIALS HERE */",
+    "host": "/* USE YOUR CREDENTIALS HERE */",
+    "port": "/* USE YOUR CREDENTIALS HERE */",
+    "url": "/* USE YOUR CREDENTIALS HERE */",
     "designdocument" : "design_reclamacoes"
   }
 
   // watson credentials
   config.watson =
   {
-    "translatorApiUser" : /* USE YOUR CREDENTIALS HERE */,
-    "translatorApiKey" : /* USE YOUR CREDENTIALS HERE */,
-    "toneanalysisApiUser" : /* USE YOUR CREDENTIALS HERE */,
-    "toneanalysisApiKey" : /* USE YOUR CREDENTIALS HERE */
+    "translatorApiUser" : "/* USE YOUR CREDENTIALS HERE */",
+    "translatorApiKey" : "/* USE YOUR CREDENTIALS HERE */",
+    "toneanalysisApiUser" : "/* USE YOUR CREDENTIALS HERE */",
+    "toneanalysisApiKey" : "/* USE YOUR CREDENTIALS HERE */"
   }
 
 }else {
@@ -44,7 +47,7 @@ if(!process.env.VCAP_SERVICES) {
   // configuration to run application on Bluemix
   config.db =
   {
-    "name" : vcapServices.cloudantNoSQLDB[0].name,
+    "name" : "reclame-cloudant",
     "username": vcapServices.cloudantNoSQLDB[0].credentials.username,
     "password": vcapServices.cloudantNoSQLDB[0].credentials.password,
     "host": vcapServices.cloudantNoSQLDB[0].credentials.host,
@@ -56,8 +59,8 @@ if(!process.env.VCAP_SERVICES) {
   // watson credentials
   config.watson =
   {
-    "translatorApiUser" : vcapServices.language_translation[0].credentials.username,
-    "translatorApiKey" : vcapServices.language_translation[0].credentials.password,
+    "translatorApiUser" : vcapServices.language_translator[0].credentials.username,
+    "translatorApiKey" : vcapServices.language_translator[0].credentials.password,
     "toneanalysisApiUser" : vcapServices.tone_analyzer[0].credentials.username,
     "toneanalysisApiKey" : vcapServices.tone_analyzer[0].credentials.password
   }
